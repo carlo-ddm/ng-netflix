@@ -31,31 +31,16 @@ export class MainComponent implements OnInit {
       next:(data:PaginatedShow) => {
         console.log(data.results);
         this.movies = data.results
-      }
+      },
+
+      complete: ()=>{
+        console.log('complete');
+      },
+
+      error: ()=>{
+        console.log('error');
+      },
+
     })
   }
 }
-
-// EX CALL
-// getResponse(){
-
-//   this.httpService.getPaginateApi(2, 10).subscribe({
-
-//     next:(data:Beers[])=>{
-//     console.log(data);
-//     this.beers = data
-//     // console.log('BIRRE__>>',this.beers);
-//   },
-
-//   complete:()=>{
-//     console.log('coplete');
-//   },
-
-//   error:()=>{
-//     console.log('error');
-//   }
-
-// });
-// }
-// }
-
