@@ -12,8 +12,11 @@ export class MainComponent implements OnInit{
 
   constructor(){}
 
-  @Input()
-  shows!: Show[];
+  // Shows
+  @Input() shows!:Show[];
+
+
+
 
   ngOnInit(): void {
     console.log('trending in \' Main \' ',this.shows);

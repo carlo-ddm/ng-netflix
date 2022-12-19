@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   // Params
   api_key:string = "c6ddb2547d3e67a073e9212d12070041";
 
-  movies:Show[] = [];
+  shows:Show[] = [];
 
 
   ngOnInit(): void {
@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
 
       next:(data:PaginatedShow) => {
         console.log(data.results);
-        this.movies = data.results
+        this.shows = data.results
       },
 
       complete: ()=>{
