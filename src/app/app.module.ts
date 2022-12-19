@@ -2,6 +2,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+// : -> HTTP Client Module
+import { HttpClientModule } from '@angular/common/http'
+
 // Routing Module
 import { AppRoutingModule } from './app-routing.module';
 
