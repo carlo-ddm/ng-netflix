@@ -1,3 +1,11 @@
+export interface PaginatedShow {
+  page: number;
+  results: Show[];
+  total_pages: number;
+  total_results: number;
+
+}
+
 export interface Show {
   adult: boolean;
   backdrop_path: string;
@@ -15,10 +23,3 @@ export interface Show {
   vote_count: number;
 }
 
-export interface PaginatedShow {
-  page: number;
-  results: Show[];
-  total_pages: number;
-  total_results: number;
-
-}
