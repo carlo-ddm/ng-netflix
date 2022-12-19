@@ -14,13 +14,15 @@ import { PaginatedShow, Show } from 'src/app/interfaces/show';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+  constructor(private http: HttpService){}
+
   title = 'ng-netflix';
   // Params
   api_key:string = "c6ddb2547d3e67a073e9212d12070041";
 
   movies:Show[] = [];
 
-  constructor(private http: HttpService){}
 
   ngOnInit(): void {
     this.showApi();

@@ -1,8 +1,15 @@
 main {
-  .cd-card {
-    width: 150px;
-    height: 170px;
-    border: 1px solid black;
-    margin-right: 10px;
+  margin: auto;
+  .container {
+    .cd-card-container {
+      min-width: 200px;
+      height: 335px;
+      overflow: auto;
+      .cd-card {
+        width: calc(100% / 4);
+        border: 1px solid black;
+        flex-shrink: 0;
+      }
+    }
   }
 }

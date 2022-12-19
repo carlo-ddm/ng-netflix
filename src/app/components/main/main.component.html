@@ -1,7 +1,14 @@
-<main class="px-2 d-flex">
-  <app-card class="cd-card my-3"></app-card>
-  <app-card class="cd-card my-3"></app-card>
-  <app-card class="cd-card my-3"></app-card>
-  <app-card class="cd-card my-3"></app-card>
+<main>
+  <div class="container">
+    <div class="cd-card-container d-flex">
+      <app-card
+      *ngFor="let show of shows"
+      class="cd-card my-3"
+      >
+      </app-card>
+    </div>
+  </div>
 </main>
+
+
 
