@@ -14,6 +14,6 @@ export class CardComponent implements OnInit {
   show!: Show;
 
   ngOnInit(): void {
-    console.log('trending in \' Card \' ',this.show);
+    // console.log('trending in \' Card \' ',this.show);
   }
 }

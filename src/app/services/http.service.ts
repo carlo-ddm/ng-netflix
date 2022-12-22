@@ -17,9 +17,10 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
 
-  httpGet(api_key: string):Observable<PaginatedShow>{
+  httpGet(api_key: string, page:number):Observable<PaginatedShow>{
     let params = new HttpParams();
     params = params.set('api_key', api_key);
+    params = params.set ('page', page)
     return this.http.get<PaginatedShow>(this.movie_endopoint, {params})
   }
 }

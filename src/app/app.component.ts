@@ -21,7 +21,11 @@ export class AppComponent implements OnInit {
   // Params
   api_key:string = "c6ddb2547d3e67a073e9212d12070041";
 
+  cycles:number = 3;
+  page:number = 1;
+
   shows:Show[] = [];
+
 
 
   ngOnInit(): void {
@@ -29,22 +33,27 @@ export class AppComponent implements OnInit {
   }
 
   showApi(){
-    this.http.httpGet(this.api_key).subscribe({
 
-      next:(data:PaginatedShow) => {
-        console.log(data.results);
-        this.shows = data.results
-      },
+    for (let cy = 1; cy <= this.cycles; cy++) {
+      this.http.httpGet(this.api_key, cy).subscribe({
 
-      complete: ()=>{
-        console.log('complete');
-      },
 
-      error: ()=>{
-        console.log('error');
-      },
+        next:(data:PaginatedShow) => {
+          console.log(data.results);
+          // Spread Operator..
+          this.shows =  [...this.shows, ... data.results];
+        },
 
-    })
+        complete: ()=>{
+          console.log('complete');
+        },
+
+        error: ()=>{
+          console.log('error');
+        },
+
+      })
+    }
   }
 }
 
