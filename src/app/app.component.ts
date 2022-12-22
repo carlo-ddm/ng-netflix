@@ -34,13 +34,16 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.showApi();
     this.getGenres();
+    this.http.query ='tv/list?';
+    this.getGenres();
   }
 
   getGenres(){
     this.http.httpGetGenres(this.api_key, this.language).subscribe({
 
       next:(data:Obj) => {
-        console.log('-----> ',data);
+        console.log('GENRES? -> ',data.genres);
+        this.genres =  [...this.genres, ... data.genres];
       },
 
       complete: ()=>{
@@ -59,7 +62,7 @@ export class AppComponent implements OnInit {
       this.http.httpGet(this.api_key, cy).subscribe({
 
         next:(data:PaginatedShow) => {
-          console.log(data.results);
+          // console.log(data.results);
           // Spread Operator..
           this.shows =  [...this.shows, ... data.results];
         },

@@ -4,7 +4,7 @@ export interface Genres {
 }
 
 export interface Obj {
-  obj: Genres
+  genres: Genres[]
 }
 
 
