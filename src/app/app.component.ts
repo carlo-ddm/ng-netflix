@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
   page:number = 1;
 
   shows:Show[] = [];
-  genres: string[] = [];
+  genresId: number[] = [];
 
   ngOnInit(): void {
     this.showApi();
@@ -44,10 +44,10 @@ export class AppComponent implements OnInit {
         //this.genres =  [...this.genres, ... data.genres];
         //console.log('ALL ', this.genres);
         for (let i = 0; i < data.genres.length; i++) {
-          if (!this.genres.includes(data.genres[i].name)) {
-            this.genres.push(data.genres[i].name)
+          if (!this.genresId.includes(data.genres[i].id)) {
+            this.genresId.push(data.genres[i].id)
           }
-          console.log('FILTER -> ', this.genres);
+          console.log('FILTER -> ', this.genresId);
         }
       },
 
