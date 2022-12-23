@@ -29,8 +29,6 @@ export class AppComponent implements OnInit {
   shows:Show[] = [];
   genres: string[] = [];
 
-
-
   ngOnInit(): void {
     this.showApi();
     this.getGenres();
@@ -50,9 +48,7 @@ export class AppComponent implements OnInit {
             this.genres.push(data.genres[i].name)
           }
           console.log('FILTER -> ', this.genres);
-
         }
-
       },
 
       complete: ()=>{
