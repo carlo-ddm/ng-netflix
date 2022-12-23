@@ -27,7 +27,9 @@ export class AppComponent implements OnInit {
   page:number = 1;
 
   shows:Show[] = [];
-  genresId: number[] = [];
+  // Dico: questo set tratterà una lista di generi
+  genres: Genres[] = [];
+  setGenres!: Set<Genres>
 
   ngOnInit(): void {
     this.showApi();
@@ -40,15 +42,21 @@ export class AppComponent implements OnInit {
     this.http.httpGetGenres(this.api_key, this.language).subscribe({
 
       next:(data:Obj) => {
-        //console.log('GENRES? -> ',data.genres);
-        //this.genres =  [...this.genres, ... data.genres];
-        //console.log('ALL ', this.genres);
-        for (let i = 0; i < data.genres.length; i++) {
-          if (!this.genresId.includes(data.genres[i].id)) {
-            this.genresId.push(data.genres[i].id)
-          }
-          console.log('FILTER -> ', this.genresId);
-        }
+        console.log('GENRES? -> ',data.genres);
+
+        this.genres = [... this.genres, ... data.genres].filter((genre, index, genresList) =>{
+          return index === genresList.findIndex((g) => g.id === genre.id)
+        })
+        console.log('GGGG -->', this.genres);
+
+
+
+        // for (let i = 0; i < data.genres.length; i++) {
+        //   if (!this.genresId.includes(data.genres[i].id)) {
+        //     this.genresId.push(data.genres[i].id)
+        //   }
+        //   console.log('FILTER -> ', this.genresId);
+        // }
       },
 
       complete: ()=>{
