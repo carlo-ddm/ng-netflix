@@ -23,7 +23,6 @@ export class MainComponent implements OnInit{
   ngOnInit(): void {
     console.log('trending in \' Main \' ',this.shows);
     console.log('main genres ', this.genres);
-
   }
 }
 

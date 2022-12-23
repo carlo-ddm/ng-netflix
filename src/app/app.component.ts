@@ -60,6 +60,8 @@ export class AppComponent implements OnInit {
 
         next:(data:PaginatedShow) => {
           this.shows =  [...this.shows, ... data.results];
+          console.log(this.shows);
+
         },
 
         complete: ()=>{
