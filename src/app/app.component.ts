@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
   page:number = 1;
 
   shows:Show[] = [];
-  genres:Genres[] = [];
+  genres: string[] = [];
 
 
 
@@ -42,8 +42,17 @@ export class AppComponent implements OnInit {
     this.http.httpGetGenres(this.api_key, this.language).subscribe({
 
       next:(data:Obj) => {
-        console.log('GENRES? -> ',data.genres);
-        this.genres =  [...this.genres, ... data.genres];
+        //console.log('GENRES? -> ',data.genres);
+        //this.genres =  [...this.genres, ... data.genres];
+        //console.log('ALL ', this.genres);
+        for (let i = 0; i < data.genres.length; i++) {
+          if (!this.genres.includes(data.genres[i].name)) {
+            this.genres.push(data.genres[i].name)
+          }
+          console.log('FILTER -> ', this.genres);
+
+        }
+
       },
 
       complete: ()=>{
