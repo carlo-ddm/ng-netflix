@@ -15,14 +15,17 @@ export class MainComponent implements OnInit{
 
   // Shows
   @Input() shows!:Show[];
-  @Input() genres!:Genres[]
-
+  @Input() genres!:Genres[];
 
 
 
   ngOnInit(): void {
     console.log('trending in \' Main \' ',this.shows);
     console.log('main genres ', this.genres);
+  }
+
+  getAndCompare(genres: Genres): Show[]{
+   return  this.shows.filter((show)=>{ return show.genre_ids.includes(genres.id) });
   }
 }
 

@@ -3,7 +3,7 @@
     <h1>{{g.name}}</h1>
     <div class="cd-card-container d-flex">
       <app-card
-      *ngFor="let show of shows"
+      *ngFor="let show of getAndCompare(g)"
       [show]="show"
       class="cd-card my-3"
       >
