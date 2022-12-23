@@ -7,8 +7,6 @@ import { HttpService } from 'src/app/services/http.service';
 import { PaginatedShow, Show } from 'src/app/interfaces/show';
 import { Obj, Genres } from './interfaces/genres';
 
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -27,9 +25,7 @@ export class AppComponent implements OnInit {
   page:number = 1;
 
   shows:Show[] = [];
-  // Dico: questo set tratterà una lista di generi
   genres: Genres[] = [];
-  setGenres!: Set<Genres>
 
   ngOnInit(): void {
     this.showApi();
@@ -42,21 +38,9 @@ export class AppComponent implements OnInit {
     this.http.httpGetGenres(this.api_key, this.language).subscribe({
 
       next:(data:Obj) => {
-        console.log('GENRES? -> ',data.genres);
-
         this.genres = [... this.genres, ... data.genres].filter((genre, index, genresList) =>{
           return index === genresList.findIndex((g) => g.id === genre.id)
         })
-        console.log('GGGG -->', this.genres);
-
-
-
-        // for (let i = 0; i < data.genres.length; i++) {
-        //   if (!this.genresId.includes(data.genres[i].id)) {
-        //     this.genresId.push(data.genres[i].id)
-        //   }
-        //   console.log('FILTER -> ', this.genresId);
-        // }
       },
 
       complete: ()=>{
@@ -75,8 +59,6 @@ export class AppComponent implements OnInit {
       this.http.httpGet(this.api_key, cy).subscribe({
 
         next:(data:PaginatedShow) => {
-          // console.log(data.results);
-          // Spread Operator..
           this.shows =  [...this.shows, ... data.results];
         },
 
