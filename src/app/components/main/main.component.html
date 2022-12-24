@@ -1,7 +1,7 @@
 <main>
   <div *ngFor="let g of genres" class="container">
     <h1>{{g.name}}</h1>
-    <div class="cd-card-container d-flex">
+    <div class="cd-card-container d-flex" >
       <app-card
       *ngFor="let show of getAndCompare(g)"
       [show]="show"

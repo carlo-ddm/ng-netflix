@@ -14,18 +14,34 @@ export class MainComponent implements OnInit{
   constructor(){}
 
   // Shows
-  @Input() shows!:Show[];
-  @Input() genres!:Genres[];
-
+  @Input() shows:Show[] = [];
+  @Input() genres:Genres[] = [];
+  display!:boolean;
+  idArr!:number[]
 
 
   ngOnInit(): void {
-    console.log('trending in \' Main \' ',this.shows);
-    console.log('main genres ', this.genres);
+    // console.log('trending in \' Main \' ',this.shows);
+    // console.log('main genres ', this.genres);
+    this.idArr = this.arrIdCreator()
+    console.log(this.idArr);
+
+
   }
 
   getAndCompare(genres: Genres): Show[]{
    return  this.shows.filter((show)=>{ return show.genre_ids.includes(genres.id) });
+  }
+
+  arrIdCreator():number[]{
+
+    let array = this.genres.map((g) => {
+
+      return g.id
+    })
+    console.log(array);
+
+    return array
   }
 }
 
